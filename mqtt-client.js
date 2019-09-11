@@ -3,7 +3,7 @@ const mqtt = require('mqtt');
 class MqttHandler {
     constructor() {
         this.mqttClient = null;
-        this.host = 'mqtt:/mqtt.eclipse.org:1883';
+        this.host = 'mqtt:/test.mosquitto.org:1883';
         this.username = 'user'; // mqtt credentials if these are needed to connect
         this.password = 'user';
     }
@@ -23,13 +23,13 @@ class MqttHandler {
             console.log(`mqtt client connected`);
         });
 
-        // // mqtt subscriptions
-        // this.mqttClient.subscribe('test1', { qos: 0 });
+        // mqtt subscriptions
+        this.mqttClient.subscribe('test3', { qos: 0 });
 
-        // // When a message arrives, console.log it
-        // this.mqttClient.on('message', function (topic, message) {
-        //     console.log(message.toString());
-        // });
+        // When a message arrives, console.log it
+        this.mqttClient.on('message', function (topic, message) {
+            console.log(message.toString());
+        });
 
         this.mqttClient.on('close', () => {
             console.log(`mqtt client disconnected`);
@@ -38,7 +38,7 @@ class MqttHandler {
 
     // Sends a mqtt message to topic: mytopic
     sendMessage(message) {
-        this.mqttClient.publish('test1', message);
+        this.mqttClient.publish('test3', message);
     }
 }
 
