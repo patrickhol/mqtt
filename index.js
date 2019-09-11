@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 app.post('/', (req, res) => {
 
   mqttClient.sendMessage(req.body.message);
-  res.status(200).send("Message sent to mqtt", req.body.message);
+  res.status(200).send("Message sent to mqtt");
   // console.log(req.body)
 
   // res.send(req.body)
