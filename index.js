@@ -4,15 +4,19 @@ const app = express();
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+const bodyParser = require('body-parser');
+
+
 // enable ssl redirect
 app.use(sslRedirect());
+app.use(bodyParser());
 app.get('/', function (req, res) {
   res.send('hello world');
 });
 app.post('/', (req, res) => {
-  console.log(JSON.stringify(req.body))
+  console.log(req.body)
 
-  res.json(req.body)
+  res.send(req.body)
 })
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
