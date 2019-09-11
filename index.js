@@ -10,9 +10,9 @@ app.get('/', function (req, res) {
   res.send('hello world');
 });
 app.post('/', (req, res) => {
-  console.log(req.body)
+  console.log(JSON.stringify(req.body))
 
-  res.render(req.body)
+  res.json(req.body)
 })
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
